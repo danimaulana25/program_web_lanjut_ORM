@@ -12,9 +12,16 @@ class MahasiswaController extends Controller
     public function index()
     {
         //fungsi eloquent menampilkan data menggunakan pagination
-        $mahasiswa = $mahasiswa = DB::table('mahasiswa')->get(); // Mengambil semua isi tabel
-        $posts = Mahasiswa::orderBy('nim', 'desc')->paginate(6);
-        return view('mahasiswa.index', compact('mahasiswa'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $mahasiswa = $mahasiswa = DB::table('mahasiswa');
+        $post = Mahasiswa::latest();
+        if (request('search')) {
+            $post->where('nama', 'like', '%' . request('search') . '%');
+        }
+        return view('mahasiswa.index', [
+            'mahasiswa' => $mahasiswa,
+            'post' => $post->paginate(3),
+        ]);
+
     }
 
     public function create()
@@ -31,7 +38,7 @@ class MahasiswaController extends Controller
             'kelas' => 'required',
             'jurusan' => 'required',
             'email' => 'required',
-            'alamat' => 'required',
+            'alamt' => 'required',
             'ttl' => 'required',  
             ]);
 

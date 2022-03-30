@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\ViewController;
 use Illuminate\Http\Request;
 
 /*
@@ -16,3 +17,4 @@ use Illuminate\Http\Request;
 */
 
 Route::resource('/mahasiswa', MahasiswaController::class);
+Route::get('/view', [ViewController::class,'view']);
