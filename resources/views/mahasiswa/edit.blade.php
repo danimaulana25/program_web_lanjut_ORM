@@ -32,11 +32,23 @@
                 </div>
                 <div class="form-group">
                     <label for="Kelas">Kelas</label> 
-                    <input type="kelas" name="kelas" class="form-control" id="Kelas" value="{{ $Mahasiswa->kelas }}" aria-describedby="Kelas" > 
+                    <input type="text" name="kelas" class="form-control" id="Kelas" value="{{ $Mahasiswa->kelas }}" aria-describedby="Kelas" > 
                 </div>
                 <div class="form-group">
                     <label for="Jurusan">Jurusan</label> 
-                    <input type="Jurusan" name="jurusan" class="form-control" id="Jurusan" value="{{ $Mahasiswa->jurusan }}" aria-describedby="Jurusan" > 
+                    <input type="text" name="jurusan" class="form-control" id="Jurusan" value="{{ $Mahasiswa->jurusan }}" aria-describedby="Jurusan" > 
+                </div>
+                <div class="form-group">
+                    <label for="Email">Email</label> 
+                    <input type="text" name="email" class="form-control" id="Email" value="{{ $Mahasiswa->email }}" aria-describedby="Email" > 
+                </div>
+                <div class="form-group">
+                    <label for="Alamt">Alamat</label> 
+                    <input type="text" name="alamat" class="form-control" id="Alamat" value="{{ $Mahasiswa->alamat }}" aria-describedby="Alamat" > 
+                </div>
+                <div class="form-group">
+                    <label for="Tanggal lahir">Tanggal lahir</label> 
+                    <input type="date" name="ttl" class="form-control" id="TanggalLahir" value="{{ $Mahasiswa->ttl }}" aria-describedby="TanggalLahir" > 
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

@@ -14,9 +14,9 @@ class TabelEmailAlamatTanggallahir extends Migration
     public function up()
     {
         Schema::table('mahasiswa', function (Blueprint $table) {
-            $table->string('email', 25);
-            $table->string('alamat', 40);
-            $table->date('ttl', 35);
+            $table->string('email', 50)->nullable();
+            $table->string('alamat', 125)->nullable();
+            $table->date('ttl', 35)->nullable();
         });
     }
 

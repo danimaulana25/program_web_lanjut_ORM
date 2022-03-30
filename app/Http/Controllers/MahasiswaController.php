@@ -29,7 +29,10 @@ class MahasiswaController extends Controller
             'nim' => 'required',
             'nama' => 'required',
             'kelas' => 'required',
-            'jurusan' => 'required', 
+            'jurusan' => 'required',
+            'email' => 'required',
+            'alamat' => 'required',
+            'ttl' => 'required',  
             ]);
 
         //fungsi eloquent untuk menambah data
@@ -61,6 +64,9 @@ class MahasiswaController extends Controller
             'nama' => 'required',
             'kelas' => 'required',
             'jurusan' => 'required',
+            'email' => 'required',
+            'alamat' => 'required',
+            'ttl' => 'required', 
         ]);
         Mahasiswa::where('id_mahasiswa', $mahasiswa->id_mahasiswa)->update($validateData);
         return redirect()->route('mahasiswa.index')->with('success', 'Data berhasil diubah');

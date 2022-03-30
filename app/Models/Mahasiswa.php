@@ -22,6 +22,9 @@ class Mahasiswa extends Model //Definisi Model
         'nama',
         'kelas',
         'jurusan',
+        'email',
+        'alamat',
+        'ttl',
     ];
     public function getRouteKeyName()
     {
