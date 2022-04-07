@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model; //Model Eloquent
 class Mahasiswa extends Model //Definisi Model
 {
     protected $table='mahasiswa'; // Eloquent akan membuat model mahasiswa menyimpan record ditabel mahasiswa
-    protected  $primaryKey = 'id_mahasiswa'; // Memanggil isi DB Dengan primarykey
+    protected  $primaryKey = 'nim'; // Memanggil isi DB Dengan primarykey
     /**
      * The attributes that are mass assignable.
      *
@@ -26,8 +26,7 @@ class Mahasiswa extends Model //Definisi Model
         'alamat',
         'ttl',
     ];
-    public function getRouteKeyName()
-    {
-        return 'nim';
+    public function kelas(){
+        return $this->belongsTo(Kelas::class);
     }
 }; 

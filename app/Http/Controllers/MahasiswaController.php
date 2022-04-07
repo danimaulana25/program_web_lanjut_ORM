@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
 use Illuminate\Support\Facades\DB;
+use App\Models\Kelas;
 
 
 class MahasiswaController extends Controller
 {
     public function index()
     {
-        //fungsi eloquent menampilkan data menggunakan pagination
-        $mahasiswa = $mahasiswa = DB::table('mahasiswa');
+        //yang semula Mahasiswa::all, diubah menjadi with() yang menyatakan reelasi
+        
+        $mahasiswa = Mahasiswa::with('kelas')->get();
         $post = Mahasiswa::latest();
         if (request('search')) {
             $post->where('nama', 'like', '%' . request('search') . '%');
