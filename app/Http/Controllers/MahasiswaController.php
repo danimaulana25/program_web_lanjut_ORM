@@ -41,12 +41,25 @@ class MahasiswaController extends Controller
             'kelas' => 'required',
             'jurusan' => 'required',
             'email' => 'required',
-            'alamt' => 'required',
+            'alamat' => 'required',
             'ttl' => 'required',  
             ]);
+        
+        $mahasiswa = new Mahasiswa;
+        $mahasiswa->nim = $request->get('nim');
+        $mahasiswa->nama = $request->get('nama');
+        $mahasiswa->jurusan= $request->get('jurusan');
+        $mahasiswa->email= $request->get('email');
+        $mahasiswa->alamat= $request->get('alamat');
+        $mahasiswa->ttl= $request->get('ttl');
+        $mahasiswa->save();
 
-        //fungsi eloquent untuk menambah data
-        Mahasiswa::create($request->all());
+        $kelas = new Kelas;
+        $kelas->id = $request->get('kelas');
+
+        //fungsi eloquent untuk menambah data dengan relasi belongto
+        $mahasiswa->kelas()->associate($kelas);
+        $mahasiswa->save();
         
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
         return redirect()->route('mahasiswa.index')
