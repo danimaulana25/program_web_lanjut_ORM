@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Mahasiswa;
-
+use App\Models\MataKuliah;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,7 +16,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            MahasiswaSeeder::class
+            
+            KelasSeeder::class,
+            MataKuliahSeeder::class,
+            MahasiswaSeeder::class,
+            nilaiSeeder::class
         ]);
     }
 }

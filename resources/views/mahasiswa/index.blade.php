@@ -38,7 +38,7 @@
         <th>Email</th>
         <th>Alamat</th>
         <th>Tanggal Lahir</th>
-        <th width="280px">Action</th>
+        <th width="300px">Action</th>
     </tr>
     @foreach ($post as $mhs)
     <tr>
@@ -56,6 +56,7 @@
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Delete</button>
+                <a href="/nilai/{{$mhs -> nim}}" class="btn btn-warning">Nilai </a>
             </form>
         </td>
     </tr>
