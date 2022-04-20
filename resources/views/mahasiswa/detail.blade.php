@@ -10,11 +10,10 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><b>Nim: </b>{{$Mahasiswa-> nim}}</li>
                     <li class="list-group-item"><b>Nama: </b>{{$Mahasiswa-> nama}}</li>
+                    <li class="list-group-item"><b>Foto: </b><img src="{{ asset('storage/'.$Mahasiswa -> foto) }}" alt="" height="150px" width="150px" class="rounded"
+                        style="object-fit: cover"></li>
                     <li class="list-group-item"><b>Kelas: </b>{{$Mahasiswa-> kelas->nama_kelas}}</li>
                     <li class="list-group-item"><b>Jurusan: </b>{{$Mahasiswa-> jurusan}}</li>
-                    <li class="list-group-item"><b>Email: </b>{{$Mahasiswa-> email}}</li>
-                    <li class="list-group-item"><b>Alamt: </b>{{$Mahasiswa-> alamat}}</li>
-                    <li class="list-group-item"><b>Tanggal Lahir: </b>{{$Mahasiswa-> ttl}}</li>
                 </ul>
             </div>
             <a class="btn btn-success mt-3" href="{{ route('mahasiswa.index') }}">Kembali</a>

@@ -17,7 +17,7 @@ class CreateMahasiswaMatakuliah extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('mahasiswa_id');
             $table->unsignedBigInteger('matakuliah_id');
-            $table->foreign('mahasiswa_id')->references('id_mahasiswa')->on('mahasiswa');
+            $table->foreign('mahasiswa_id')->references('id_mahasiswa')->on('mahasiswas');
             $table->foreign('matakuliah_id')->references('id')->on('matakuliah');
             $table->string('nilai');
             $table->timestamps();

@@ -7,7 +7,7 @@
         </div>
         <div class="float-right my-2">
             <a class="btn btn-success" href="{{ route('mahasiswa.create') }}"> Input Mahasiswa</a><br><br>
-            <a class="btn btn-success" href="/view"> Tampilan View Mahasiswa</a>
+            {{-- <a class="btn btn-success" href="/view"> Tampilan View Mahasiswa</a> --}}
         </div>
         
     </div>
@@ -33,22 +33,19 @@
     <tr>
         <th>Nim</th>
         <th>Nama</th>
+        <th>Foto</th>
         <th>Kelas</th>
         <th>Jurusan</th>
-        <th>Email</th>
-        <th>Alamat</th>
-        <th>Tanggal Lahir</th>
         <th width="300px">Action</th>
     </tr>
     @foreach ($post as $mhs)
     <tr>
         <td>{{ $mhs -> nim }}</td>
         <td>{{ $mhs -> nama }}</td>
+        <td><img src="{{ asset('storage/'.$mhs -> foto) }}" alt="" height="150px" width="150px" class="rounded"
+            style="object-fit: cover"></td>
         <td>{{ $mhs -> kelas->nama_kelas }}</td>
         <td>{{ $mhs -> jurusan }}</td>
-        <td>{{ $mhs -> email }}</td>
-        <td>{{ $mhs -> alamat }}</td>
-        <td>{{ $mhs -> ttl }}</td>
         <td>
             <form action="{{ route('mahasiswa.destroy',['mahasiswa'=>$mhs->nim]) }}" method="POST">
                 <a class="btn btn-info" href="{{ route('mahasiswa.show',$mhs->nim) }}">Show</a>

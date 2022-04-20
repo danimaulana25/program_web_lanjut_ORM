@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Mahasiswa;
-use Illuminate\Support\Facades\DB;
 use App\Models\Kelas;
-
+use App\Models\Mahasiswa;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class MahasiswaController extends Controller
 {
@@ -35,15 +36,16 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         //melakukan validasi data
-        $request->validate([
+        $cek=$request->validate([
             'nim' => 'required',
             'nama' => 'required',
+            'foto' => 'required',
             'kelas_id' => 'required',
             'jurusan' => 'required',
-            'email' => 'required',
-            'alamat' => 'required',
-            'ttl' => 'required',  
             ]);
+            if ($request->file('foto')) {
+                $cek['foto'] = $request->file('foto')->store('images', 'public');
+            }    
         
         //  $mahasiswa = new Mahasiwa;
         //  $mahasiswa->nim=$request->get('nim');
@@ -63,15 +65,7 @@ class MahasiswaController extends Controller
 
         // Mahasiswa::create($request->all());
         // dd($request->all());
-        Mahasiswa::create([
-            'nim' => $request->nim,
-            'nama' => $request->nama,
-            'kelas_id' => $request->kelas_id,
-            'jurusan' => $request->jurusan,
-            'email' => $request->email,
-            'alamat' => $request->alamat,
-            'ttl' => $request->ttl, 
-            ]);            
+        Mahasiswa::create($cek);            
 
          //jika data berhasil ditambahkan, akan kembali ke halaman utama
          return redirect()->route('mahasiswa.index')
@@ -100,12 +94,16 @@ class MahasiswaController extends Controller
         $validateData = $request->validate([
             'nim' => 'required',
             'nama' => 'required',
+            'foto' => 'required',
             'kelas_id' => 'required',
             'jurusan' => 'required',
-            'email' => 'required',
-            'alamat' => 'required',
-            'ttl' => 'required', 
         ]);
+        if ($mahasiswa->foto && file_exists(storage_path('app/public/' . $mahasiswa->foto))) {
+            Storage::delete('public/' . $mahasiswa->foto);
+        }
+        $foto = $request->file('foto')->store('images', 'public');
+        $validateData['foto'] = $foto;
+
         Mahasiswa::where('id_mahasiswa',$mahasiswa->id_mahasiswa)->update($validateData);          
 
          //jika data berhasil ditambahkan, akan kembali ke halaman utama

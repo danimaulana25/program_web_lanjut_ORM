@@ -20,3 +20,4 @@ use Illuminate\Http\Request;
 Route::resource('/mahasiswa', MahasiswaController::class);
 Route::get('/view', [ViewController::class,'view']);
 Route::get('/nilai/{mahasiswa}', [nilaiController::class, 'nilai']);
+Route::get('/cetak_pdf/{mahasiswa}', [nilaiController::class, 'pdf']);

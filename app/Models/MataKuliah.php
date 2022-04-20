@@ -9,7 +9,7 @@ class MataKuliah extends Model
 {
     use HasFactory;
     protected $table = 'matakuliah';
-
+    protected $primaryKey = 'id';
     public function mahasiswa()
     {
         return $this->belongsToMany(Mahasiswa::class, 'mahasiswa_matakuliah', 'matakuliah_id', 'mahasiswa_id')->withPivot('nilai');

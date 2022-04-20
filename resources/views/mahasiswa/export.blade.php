@@ -3,12 +3,12 @@
 @section('content')
 <div class="col-lg-12 margin-tb mb-5">
     <a href="/mahasiswa" style="text-decoration: none;color:black">
-        <div class="pull-left mt-2">
-            <h2>JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h2>
+        <div class="text-center pull-left mt-2">
+            <h3>JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h3>
         </div>
     </a>
 </div>
-<h1 class="text-center">KARTU HASIL STUDI (KHS)</h1>
+<h2 class="text-center">KARTU HASIL STUDI (KHS)</h2>
 <div class="bio mt-5 mb-4">
     <p><strong>Nama : </strong> {{ $mhs -> nama }}</p>
     <p><strong>NIM : </strong> {{ $mhs-> nim }}</p>
@@ -38,7 +38,4 @@
 
     </tbody>
 </table>
-<div class="text-center">
-    <a href="/cetak_pdf/{{ $mhs -> nim }}" class="btn btn-danger"> Cetak PDF</a>
-</div>
 @endsection
